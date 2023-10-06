@@ -1,0 +1,49 @@
+{% extends 'customers/base.html' %}
+
+<!-- content -->
+{% block content %}
+<div class="bg-white overflow-auto divide divide-dashed">
+  <table class="min-w-full bg-white">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
+          First name
+        </th>
+        <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
+          Last name
+        </th>
+        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+          Phone
+        </th>
+        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+          Email
+        </th>
+        <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+          Next Appointment
+        </th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-700">
+      {% for customer in customers %}
+      <tr>
+        <td class="w-1/3 text-left py-3 px-4">{{customer.first_name}}</td>
+        <td class="w-1/3 text-left py-3 px-4">{{customer.last_name}}</td>
+        <td class="text-left py-3 px-4">
+          <a class="hover:text-blue-500" href="tel:{{customer.cell}}">
+            {{customer.cell}}
+          </a>
+        </td>
+        <td class="text-left py-3 px-4">
+          <a class="hover:text-blue-500" href="mailto:{{customer.email}}">
+            {{customer.email}}
+          </a>
+        </td>
+        <td class="w-1/3 text-left py-3 px-4">
+          {{customer.next_appointment.StartTime}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

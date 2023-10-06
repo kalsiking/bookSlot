@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn0.iconfinder.com/data/icons/pinpoint-interface/48/reservations_copy-256.png"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customers</title>
+    <!-- Tailwind -->
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+      .font-family-karla {
+        font-family: karla;
+      }
+
+      .bg-sidebar {
+        background: #ffa500;
+      }
+
+      .active-nav-link {
+        background: #d48a00;
+      }
+
+      .nav-item:hover {
+        background: #b07608;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-family-karla flex">
+    <aside class="relative bg-sidebar w-64 hidden sm:block shadow-xl">
+      <div class="p-6">
+        <a
+          href='{% url "landing:index" %}'
+          class="text-white text-3xl font-semibold uppercase hover:text-gray-300"
+        >
+          Booking Buddy
+        </a>
+      </div>
+      <nav class="text-white text-base font-semibold pt-3">
+        <a
+          href='{% url "schedules:index" %}'
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-calendar-alt mr-3"></i>
+          Schedules
+        </a>
+        <a
+          href='{% url "customers:index" %}'
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-user-alt mr-3"></i>
+          Customers
+        </a>
+        <a
+          href='{% url "admin:index" %}'
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-plus mr-3"></i>
+          Admin
+        </a>
+      </nav>
+    </aside>
+    <div
+      class="w-full l-full overflow-x-hidden border-t flex flex-col divide-dashed"
+    >
+      {% block content %}{% endblock %}
+    </div>
+    <!-- Font Awesome -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+      integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
